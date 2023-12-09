@@ -11,6 +11,7 @@ const Index = () => {
   const [subTitle, setSubTitle] = useState<string>("")
   const [abstract, setAbstract] = useState<string>("")
   const [hashTag, setHashTag] = useState<string>("#test #test")
+  const [keyword, setKeyword] = useState<string>("")
   const [numberOfParticipant, setNumberOfParticipant] = useState<number>(1)
   const [day, setDay] = useState<Date>(toDay)
 
@@ -45,7 +46,7 @@ const Index = () => {
               <Box fontWeight={"bold"} fontSize={20} textDecoration={"underline"}>Step1: AIによる勉強会生成</Box>
               <FormLabel mt={5}>テーマ</FormLabel>
               <Textarea w={"400px"} h={"150px"} borderColor={"gray.400"} alignContent={"top"} mt={2}
-              value={title} placeholder="技術のキーワードを入力してくだい" onChange={(e) => {setTitle(e.target.value)}}/>
+              value={keyword} placeholder="技術のキーワードを入力してくだい" onChange={(e) => {setKeyword(e.target.value)}}/>
 
               <Button mt={5} bg={"black"} color={"white"} w={"200px"} onSubmit={OnSubmit}>実行</Button>
             </FormControl>       
@@ -58,8 +59,8 @@ const Index = () => {
             
             <Text fontWeight={"bold"} fontSize={20} textDecoration={"underline"}>Step2: 勉強会の自動作成</Text>
 
-            <FormLabel mt={5}>サブタイトル(あれば)</FormLabel>
-              <Input borderColor={"gray.400"} value={subTitle} onChange={(e) => {setSubTitle(e.target.value)}}/>
+            <FormLabel mt={5}>サブタイトル</FormLabel>
+              <Input borderColor={"gray.400"} value={subTitle} onChange={(e) => {setSubTitle(e.target.value)}} placeholder="もしあれば"/>
 
               <FormLabel mt={2}>開催日</FormLabel>
               <Box borderColor={"gray.400"}>
