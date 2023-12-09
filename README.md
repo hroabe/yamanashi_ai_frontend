@@ -5,6 +5,7 @@ Yamanashi AIハッカソン 2023でShingen.pyが作ったアプリケーショ�
 
 ### Node.JSをインストール
 
+```shell
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
@@ -15,19 +16,24 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 
 sudo apt-get update
 sudo apt-get install nodejs -y
-
+```
 
 ### Yarnのインストール
 
+```shell
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
-
+``````
 
 ### モジュールのインストール
 
+```shell
 yarn install
+```
 
 ### 起動 (デバッグ)
 
+```shell
 yarn dev
+```
