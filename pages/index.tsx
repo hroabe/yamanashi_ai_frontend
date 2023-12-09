@@ -30,7 +30,7 @@ const Index = () => {
         <Spacer/>
         <Stack justifyItems={"right"}>
           <Link href="https://github.com/hroabe/yamanashi_ai_frontend" >
-            <Image w={"30"} h={"30"} src="/github-mark-white.png" alt="logo"/>
+            <Image w={"30"} h={"30"} src="./github-mark-white.png" alt="logo"/>
           </Link>          
         </Stack>
       </HStack>
@@ -100,7 +100,7 @@ const Index = () => {
 
             <Text>画像</Text>            
             <Flex borderColor={"gray.300"} borderWidth={"1px"} width={"100%"}>
-              <Image src="/blank.png" alt="result_image" width={"100%"} height={"400px"} rounded={"md"} />
+              <Image src="./blank.png" alt="result_image" width={"100%"} height={"400px"} rounded={"md"} />
             </Flex>
                         
             <HStack fontSize={20}>
@@ -109,7 +109,9 @@ const Index = () => {
 
             <HStack alignItems={"center"}>
               <Text>概要 (Markdown)</Text>
-              <IconButton aria-label="copy" icon={<CopyIcon />} w={10} h={10}/>
+              <IconButton aria-label="copy" icon={<CopyIcon />} w={10} h={10} onClick={(e)=>{
+                
+              }}/>
             </HStack>
             <Textarea w={"100%"} h={"300px"} borderColor={"gray.300"} value={abstract} onChange={(e) => {setAbstract(e.target.value)}}
                       bg="gray.50"/>                       
