@@ -1,7 +1,10 @@
 # Yamanashi AIハッカソン 2023
 
-Yamanashi AIハッカソン 2023でShingen.pyが作ったアプリケーションを表示するための
-フロンエンドアプリです
+Yamanashi AIハッカソン 2023でチームShingen.pyが作った生成AIベースの
+アプリケーションを表示するためのフロンエンドアプリです。
+
+勉強会のタイトル/ロゴ/アウトラインを自動生成しアイデア出しや勉強会の開催・運営を
+サポートします
 
 ### Node.JSをインストール
 
@@ -37,3 +40,5 @@ yarn install
 ```shell
 yarn dev
 ```
+
+<img src='./doc/sample.png'>
