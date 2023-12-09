@@ -1,5 +1,6 @@
-import { Box, Button, Divider, Flex, FormControl, FormLabel, Grid, GridItem, HStack, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Textarea, VStack } from "@chakra-ui/react"
+import { Box, Button, Divider, Flex, FormControl, FormLabel, Grid, GridItem, HStack, Image, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Spacer, Stack, Textarea, VStack } from "@chakra-ui/react"
 import { SingleDatepicker } from "chakra-dayzed-datepicker"
+import Link from "next/link"
 import { useState } from "react"
 
 const Index = () => {
@@ -18,11 +19,21 @@ const Index = () => {
 
   return (
     <Box h={"100%"} w={"100%"} bg="white" >
-      <Flex h={"80px"} bg="blue.200" p={3}>
-        <Box verticalAlign={"center"} fontSize={32} fontWeight={"bold"} ml={5}>Shingen.py</Box>
-      </Flex>
+      <HStack w={"100%"} h={"60px"} bg="black" p={5} verticalAlign={"center"} alignContent={"center"}>
 
-      <HStack p={5} alignItems={"top"}>
+        <HStack>
+          <Box verticalAlign={"center"} fontSize={32} fontWeight={"bold"} ml={5} color="white">Shingen.py</Box>
+          <Box ml={5} fontSize={24} color={"white"}>- Study Session Generation AI -</Box>
+        </HStack>
+        <Spacer/>
+        <Stack justifyItems={"right"}>
+          <Link href="https://github.com/hroabe/yamanashi_ai_frontend" >
+            <Image w={"30"} h={"30"} src="/github-mark-white.png" alt="logo"/>
+          </Link>          
+        </Stack>
+      </HStack>
+
+      <HStack p={8} alignItems={"top"} mt={3}>
         <Box w={"fit-content"}>
           <VStack justifyContent={"top"} p={7}  w={"100%"} 
             rounded={"md"} boxShadow={"md"} borderColor={"gray.400"} borderWidth={"1px"}>
@@ -67,7 +78,7 @@ const Index = () => {
 
               <Divider borderColor={"gray.500"} mt={10} />
 
-              <Button mt={5} bg={"blue.300"} w={"150px"} onSubmit={OnSubmit}>実行</Button>            
+              <Button mt={5} bg={"black"} color={"white"} w={"150px"} onSubmit={OnSubmit}>実行</Button>            
 
             </FormControl> 
 
@@ -82,8 +93,6 @@ const Index = () => {
         </VStack>
 
       </HStack>
-  
-
     </Box>
   )
 }
