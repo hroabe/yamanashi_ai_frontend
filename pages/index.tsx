@@ -40,6 +40,9 @@ const Index = () => {
 
             <FormControl>
               <Box fontWeight={"bold"} fontSize={20}>設定</Box>
+
+              <Divider borderColor={"gray.500"} mt={3} />
+
               <FormLabel mt={5}>タイトル</FormLabel>
               <Input w={"500px"} borderColor={"gray.400"} value={title} placeholder="勉強会タイトル" onChange={(e) => {setTitle(e.target.value)}}/>
 
@@ -76,9 +79,7 @@ const Index = () => {
                 </NumberInputStepper>
               </NumberInput>            
 
-              <Divider borderColor={"gray.500"} mt={10} />
-
-              <Button mt={5} bg={"black"} color={"white"} w={"150px"} onSubmit={OnSubmit}>実行</Button>            
+              <Button mt={10} bg={"black"} color={"white"} w={"150px"} onSubmit={OnSubmit}>実行</Button>            
 
             </FormControl> 
 
