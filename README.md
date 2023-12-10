@@ -41,4 +41,11 @@ yarn install
 yarn dev
 ```
 
+### ビルドと起動
+
+```shell
+yarn build
+npx serve@latest out
+```
+
 <img src='./doc/sample.png'>
