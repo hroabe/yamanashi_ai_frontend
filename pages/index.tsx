@@ -151,14 +151,18 @@ const Index = () => {
 
         <HStack>
           <Box verticalAlign={'center'} fontSize={32} fontWeight={'bold'} ml={5} color='white'>
-            <Link href='https://shingenpy.connpass.com/'>Shingen.py</Link>
+            山本勘助晴幸
           </Box>            
           <Box ml={5} fontSize={24} color={'white'}>- Study Session Generation AI -</Box>
         </HStack>
         <Spacer/>
         <HStack justifyItems={'right'}>
+          <Box fontSize={24} color={'white'}>Brought to you by</Box>
+          <Box fontSize={32} color={'white'} fontWeight={'bold'}  ml={3}>
+            <Link href='https://shingenpy.connpass.com/'>Shingen.py</Link>
+          </Box>
           <Link href='https://github.com/hroabe/yamanashi_ai_frontend' >
-            <Image w={'30'} h={'30'} src='./github-mark-white.png' alt='logo'/>
+            <Image w={'30'} h={'30'} src='./github-mark-white.png' alt='logo' ml={10}/>
           </Link>   
           <Link href='https://github.com/k0syam/yamanashiai2023codes' >
             <Image w={'30'} h={'30'} src='./github-mark-white.png' alt='logo' />
