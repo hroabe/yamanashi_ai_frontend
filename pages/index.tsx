@@ -13,7 +13,7 @@ const Index = () => {
   const [title, setTitle] = useState<string>('タイトル')
   const [subTitle, setSubTitle] = useState<string>('')
   const [abstract, setAbstract] = useState<string>('')
-  const [hashTag, setHashTag] = useState<string>('#test #test')
+  const [hashTag, setHashTag] = useState<string>('#HashTag')
 
   const [keyword1, setKeyword1] = useState<string>('')
   const [keyword2, setKeyword2] = useState<string>('')
@@ -23,6 +23,8 @@ const Index = () => {
   const [day, setDay] = useState<Date>(toDay)
   const [loadingAI, setLoadingAI] = useState<boolean>(false)
   const [imgUrl, setImgUrl] = useState<string|undefined>(undefined)
+
+  const [outputDir, setOutputDir] = useState<string>('#')
 
   const toast = useToast()
 
@@ -77,6 +79,7 @@ const Index = () => {
               outline += v + '\r\n'
             })
             setAbstract(outline)
+            setOutputDir(ret?.data?.output_dir)
           }
         }
       )
@@ -195,7 +198,7 @@ const Index = () => {
                 }} mt={2} isDisabled={loadingAI} bg="white"/>
               </Box>              
 
-              <Button mt={5} bg={'black'} color={'white'} w={'100%'} onClick={OnDeploy}
+              <Button mt={5} bg={'black'} color={'white'} w={'100%'} onClick={OnSubmit}
                 isDisabled={loadingAI}>実行</Button>
 
               {(loadingAI)? (<Box verticalAlign={'center'}><Spinner
@@ -243,7 +246,7 @@ const Index = () => {
                 </NumberInputStepper>
               </NumberInput>
 
-              <Button mt={8} bg={'black'} color={'white'} w={'100%'} onSubmit={OnSubmit}>作成</Button>
+              <Button mt={8} bg={'black'} color={'white'} w={'100%'} onSubmit={OnDeploy}>作成</Button>
           </VStack>          
         </VStack>            
 
@@ -258,10 +261,18 @@ const Index = () => {
             <Flex borderColor={'gray.300'} borderWidth={'1px'} width={'100%'} justifyContent={'center'} rounded={'md'} height={'500px'}  scrollBehavior={'initial'}>
               <Image src={(typeof imgUrl !== 'undefined') ? imgUrl : './blank.png'} alt='result_image' rounded={'md'} objectFit={'cover'} width={(typeof imgUrl === 'undefined')?"inherit": "fit-content"}/>
             </Flex>
-                        
+
+            <HStack fontSize={15}>
+              <Text textColor={'blue.500'} textDecoration={"underline"}><Link href={(typeof imgUrl !== 'undefined') ? imgUrl : '#'} target='_blank'>FullImage</Link></Text>
+            </HStack>
+
             <HStack fontSize={20}>
               <Text textColor={'blue.400'}>{hashTag}</Text>
             </HStack>
+
+            <HStack fontSize={15}>
+              <Text textColor={'blue.500'} textDecoration={"underline"}><Link href={outputDir} target='_blank'>Document</Link></Text>
+            </HStack>            
 
             <HStack alignItems={'center'}>
               <Text>アウトライン</Text>
