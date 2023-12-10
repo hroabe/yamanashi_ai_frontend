@@ -21,9 +21,7 @@ const Index = () => {
 
   const [numberOfParticipant, setNumberOfParticipant] = useState<number>(1)
   const [day, setDay] = useState<Date>(toDay)
-
   const [loadingAI, setLoadingAI] = useState<boolean>(false)
-
   const [imgUrl, setImgUrl] = useState<string|undefined>(undefined)
 
   const toast = useToast()
@@ -99,6 +97,43 @@ const Index = () => {
       )
    }
 
+  // Connpass へのデプロイ 
+  const OnDeploy = () => {
+
+    const data = {
+      title: title,
+      sub_title: subTitle,
+      startdate: `${day.getFullYear()}-${day.getMonth()+1}-${day.getDate()}`,
+      member: numberOfParticipant,
+      imgpath: imgUrl,
+      description: abstract  
+    }
+
+    axios.post(`http://localhost:8001/connpass`, data)
+      .then(
+        (ret) => {
+          // 取得完了
+          if (ret?.status == 200){
+            // 成功
+          }
+        }
+      )
+      .catch(
+        (e) => {
+          toast({
+            title: 'Error',
+            description: `エラーが発生しました ${e}`,
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          })           
+        })
+      .finally(
+        () => {
+        }
+      )
+  }
+
   const onClickCopy = async () => {
     await global.navigator.clipboard.writeText(abstract)
     toast({
@@ -115,7 +150,9 @@ const Index = () => {
       <HStack w={'100%'} h={'60px'} bg='black' p={5} verticalAlign={'center'} alignContent={'center'}>
 
         <HStack>
-          <Box verticalAlign={'center'} fontSize={32} fontWeight={'bold'} ml={5} color='white'>Shingen.py</Box>
+          <Box verticalAlign={'center'} fontSize={32} fontWeight={'bold'} ml={5} color='white'>
+            <Link href='https://shingenpy.connpass.com/'>Shingen.py</Link>
+          </Box>            
           <Box ml={5} fontSize={24} color={'white'}>- Study Session Generation AI -</Box>
         </HStack>
         <Spacer/>
@@ -154,7 +191,7 @@ const Index = () => {
                 }} mt={2} isDisabled={loadingAI} bg="white"/>
               </Box>              
 
-              <Button mt={5} bg={'black'} color={'white'} w={'100%'} onClick={OnSubmit}
+              <Button mt={5} bg={'black'} color={'white'} w={'100%'} onClick={OnDeploy}
                 isDisabled={loadingAI}>実行</Button>
 
               {(loadingAI)? (<Box verticalAlign={'center'}><Spinner
@@ -169,7 +206,7 @@ const Index = () => {
 
           </VStack>
 
-          {/* 生成結果 (概要部) */}
+          {/* 勉強会自動作成 */}
           <VStack justifyContent={'top'} p={7}  w={'100%'} mt={5} alignItems={'left'}
             rounded={'md'} boxShadow={'md'} borderColor={'gray.400'} borderWidth={'1px'}>
             
@@ -206,7 +243,7 @@ const Index = () => {
           </VStack>          
         </VStack>            
 
-
+        {/* 生成結果 */}
         <VStack justifyContent={'top'} p={5} alignItems={'start'} w={'100%'} ml={5}
             rounded={'md'} boxShadow={'md'} borderColor={'gray.400'} borderWidth={'1px'}>            
             
